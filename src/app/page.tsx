@@ -61,7 +61,7 @@ export default function ComingSoonPage() {
           For Research &amp; Laboratory Use Only · Not for Human Consumption
         </div>
         <div className="links">
-          <a href="mailto:hello@casalabs.shop">hello@casalabs.shop</a>
+          <a href="mailto:alex@casalabs.shop">hello@casalabs.shop</a>
           <span className="sep">·</span>
           <a href="#">Certificates of Analysis</a>
           <span className="sep">·</span>

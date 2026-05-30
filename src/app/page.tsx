@@ -1,15 +1,74 @@
-import HomeHero from '@/components/home/HomeHero';
-import TrustBar from '@/components/home/TrustBar';
-import FeaturedProducts from '@/components/home/FeaturedProducts';
-import QualitySection from '@/components/home/QualitySection';
+import Countdown from '@/components/coming-soon/Countdown';
+import NotifyForm from '@/components/coming-soon/NotifyForm';
 
-export default function Home() {
+export default function ComingSoonPage() {
   return (
-    <div>
-      <HomeHero />
-      <TrustBar />
-      <FeaturedProducts />
-      <QualitySection />
-    </div>
+    <>
+      <div className="bg" aria-hidden="true" />
+
+      <header className="site">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img className="wordmark" src="/casa-labs/casa-labs-cream.png" alt="Casa Labs" />
+      </header>
+
+      <main>
+        <span className="eyebrow">Arriving Soon</span>
+
+        <h1 className="headline">
+          Advanced Research<br />
+          <em>Compounds.</em>
+        </h1>
+
+        <p
+          className="sub"
+          style={{ fontSize: '19px', width: '472px', color: 'rgb(242, 222, 199)' }}
+        >
+          The Casa Labs online store opens July 1, 2026. We provide
+          third-party-verified, batch-traceable peptides.
+        </p>
+
+        <Countdown />
+
+        <NotifyForm />
+
+        <div className="trust">
+          <span className="item">
+            <svg viewBox="0 0 24 24" fill="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z" />
+            </svg>
+            Third Party Tested
+          </span>
+          <span className="dot" />
+          <span className="item">
+            <svg viewBox="0 0 24 24" fill="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="m9 12 2 2 4-4" />
+              <circle cx="12" cy="12" r="9" />
+            </svg>
+            99% Purity Guaranteed
+          </span>
+          <span className="dot" />
+          <span className="item">
+            <svg viewBox="0 0 24 24" fill="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M2 20h20M4 20V8l6-3v3l6-3v15M14 20v-4h-4v4" />
+            </svg>
+            GMP Manufactured
+          </span>
+        </div>
+      </main>
+
+      <footer className="site">
+        <div className="disclaimer">
+          For Research &amp; Laboratory Use Only · Not for Human Consumption
+        </div>
+        <div className="links">
+          <a href="mailto:hello@casalabs.shop">hello@casalabs.shop</a>
+          <span className="sep">·</span>
+          <a href="#">Certificates of Analysis</a>
+          <span className="sep">·</span>
+          <a href="#">Contact</a>
+        </div>
+        <div className="copyright">© 2026 Casa Labs. All rights reserved.</div>
+      </footer>
+    </>
   );
 }

@@ -1,0 +1,235 @@
+/* ══════════════════════════════════════════════════════════════════════════
+   Casa Labs — Design Tokens
+   Colors, typography, spacing, radii, shadows
+   ══════════════════════════════════════════════════════════════════════════ */
+
+@import url('https://fonts.googleapis.com/css2?family=Epilogue:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* ── Lato — Brand typeface (uploaded by user, April 2026) ─────────────────
+   Paths are relative to this stylesheet. If including from a nested folder,
+   adjust the url() paths accordingly. */
+@font-face { font-family: 'Lato'; src: url('fonts/Lato-Thin.ttf') format('truetype');        font-weight: 100; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Lato'; src: url('fonts/Lato-ThinItalic.ttf') format('truetype');  font-weight: 100; font-style: italic; font-display: swap; }
+@font-face { font-family: 'Lato'; src: url('fonts/Lato-Light.ttf') format('truetype');       font-weight: 300; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Lato'; src: url('fonts/Lato-LightItalic.ttf') format('truetype'); font-weight: 300; font-style: italic; font-display: swap; }
+@font-face { font-family: 'Lato'; src: url('fonts/Lato-Regular.ttf') format('truetype');     font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Lato'; src: url('fonts/Lato-Italic.ttf') format('truetype');      font-weight: 400; font-style: italic; font-display: swap; }
+@font-face { font-family: 'Lato'; src: url('fonts/Lato-Bold.ttf') format('truetype');        font-weight: 700; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Lato'; src: url('fonts/Lato-BoldItalic.ttf') format('truetype');  font-weight: 700; font-style: italic; font-display: swap; }
+@font-face { font-family: 'Lato'; src: url('fonts/Lato-Black.ttf') format('truetype');       font-weight: 900; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Lato'; src: url('fonts/Lato-BlackItalic.ttf') format('truetype'); font-weight: 900; font-style: italic; font-display: swap; }
+
+:root {
+  /* ── Brand Palette ──────────────────────────────────────────────── */
+  --cl-cream:          #fce9d0;  /* soft cream, primary light surface, logo fill */
+  --cl-tan:            #c8b19a;  /* tan mid-tone, secondary accent */
+  --cl-stone:          #968371;  /* stone / warm taupe, tertiary */
+  --cl-coffee:         #7d6852;  /* coffee, logo strokes on cream */
+  --cl-mocha:          #5b4a37;  /* dark mocha, deep accent */
+  --cl-charcoal:       #464442;  /* charcoal, body text on cream */
+  --cl-ink:            #1a1816;  /* deep ink, primary text / surface */
+
+  /* ── Surface Ramp — Ink to Cream (6-stop) ──────────────────────── */
+  --cl-ramp-ink:       #222222;  /* deepest surface — text on light, bg on dark */
+  --cl-ramp-espresso:  #50473e;  /* warm dark surface */
+  --cl-ramp-stone:     #968371;  /* warm taupe mid */
+  --cl-ramp-sand:      #D4BA99;  /* warm tan light */
+  --cl-ramp-cream:     #FCE9D0;  /* brand cream */
+  --cl-ramp-white:     #FFFFFF;  /* paper white */
+
+  /* ── Signature Dark Canvas (product site — legacy Clinical Curator) ── */
+  --cl-bg-lowest:      #0E0E0E;  /* footer */
+  --cl-bg-primary:     #131313;  /* page background */
+  --cl-bg-secondary:   #1C1B1B;  /* cards, header glass base */
+  --cl-bg-elevated:    #201F1F;  /* hover / elevated cards */
+  --cl-bg-hover:       #2A2A2A;  /* active hover */
+  --cl-bg-highest:     #353534;  /* top-most surface, inputs */
+
+  /* ── Signature Accent — Warm Brass (dialed back from bright gold) ── */
+  --cl-gold:           #C8B19A;  /* primary accent — muted warm brass */
+  --cl-gold-hover:     #D4C0A9;
+  --cl-gold-bg:        rgba(200,177,154,0.12);
+  --cl-gold-deep:      #7D6852;  /* gradient end, pressed state */
+  --cl-on-gold:        #2a2320;  /* text on brass buttons */
+
+  /* ── Semantic Text (on dark) ──────────────────────────────────── */
+  --cl-fg1:            #F5F5DC;  /* primary — near cream */
+  --cl-fg2:            #E6D5B8;  /* secondary — soft cream */
+  --cl-fg-muted:       #A69677;  /* muted — warm tan */
+
+  /* ── Semantic Text (on cream / light) ─────────────────────────── */
+  --cl-fg1-light:      #1a1816;
+  --cl-fg2-light:      #5b4a37;
+  --cl-fg-muted-light: #968371;
+
+  /* ── Borders ──────────────────────────────────────────────────── */
+  --cl-border:         rgba(255,255,255,0.07);
+  --cl-border-light:   rgba(255,255,255,0.05);
+  --cl-border-gold:    rgba(230,193,133,0.25);
+  --cl-border-cream:   rgba(252,233,208,0.35);
+
+  /* ── Semantic status ──────────────────────────────────────────── */
+  --cl-success:        #5a9a5a;
+  --cl-warning:        #e08a3c;
+  --cl-error:          #e05a55;
+
+  /* ── Signature Gradients ──────────────────────────────────────── */
+  --cl-gradient-gold:  linear-gradient(135deg, #C8B19A 0%, #7D6852 100%);
+  --cl-gradient-vial:  linear-gradient(180deg, #3a2a1a 0%, #1a120c 100%);
+  --cl-gradient-hero:  linear-gradient(to right, rgba(19,19,19,0.92) 0%, rgba(19,19,19,0.7) 50%, rgba(19,19,19,0.3) 100%);
+
+  /* ── Glass ────────────────────────────────────────────────────── */
+  --cl-glass-bg:       rgba(42,42,42,0.6);
+  --cl-glass-blur:     20px;
+
+  /* ── Type families ────────────────────────────────────────────── */
+  /* Lato is the brand typeface (from packaging + marketing). Epilogue is
+     what the current Next.js site ships with — kept as a near-match
+     fallback. Inter is used for long-form running body on web. */
+  --cl-font-display:   'Lato', 'Epilogue', system-ui, -apple-system, sans-serif;
+  --cl-font-body:      'Lato', 'Inter', 'Epilogue', system-ui, sans-serif;
+  --cl-font-ui:        'Epilogue', 'Lato', system-ui, sans-serif;
+  --cl-font-mono:      'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  /* ── Type scale (fluid) ───────────────────────────────────────── */
+  --cl-text-micro:     0.65rem;   /* 10.4 — eyebrows / status */
+  --cl-text-xs:        0.75rem;   /* 12   — nav, caps labels */
+  --cl-text-sm:        0.85rem;   /* 13.6 — UI body */
+  --cl-text-base:      0.95rem;   /* 15.2 — body */
+  --cl-text-md:        1.05rem;   /* 16.8 */
+  --cl-text-lg:        1.35rem;   /* 21.6 — section sub heads */
+  --cl-text-xl:        1.75rem;   /* 28   — H3 */
+  --cl-text-2xl:       2rem;      /* 32   — H2 */
+  --cl-text-3xl:       2.75rem;   /* 44   — hero mobile */
+  --cl-text-4xl:       4.5rem;    /* 72   — hero desktop */
+
+  /* ── Weight ───────────────────────────────────────────────────── */
+  --cl-weight-thin:    100;
+  --cl-weight-light:   300;
+  --cl-weight-regular: 400;
+  --cl-weight-medium:  500;   /* Lato falls back to 400 — Epilogue carries 500 */
+  --cl-weight-semibold:600;   /* Lato falls back to 700 — Epilogue carries 600 */
+  --cl-weight-bold:    700;
+  --cl-weight-black:   900;   /* Lato Black */
+
+  /* ── Tracking (signature: tight headlines, wide eyebrows) ─────── */
+  --cl-tracking-tight: -0.03em;   /* hero headings */
+  --cl-tracking-snug:  -0.02em;   /* H2/H3 */
+  --cl-tracking-normal:0em;
+  --cl-tracking-wide:  0.08em;    /* nav, uppercase small caps */
+  --cl-tracking-widest:0.15em;    /* eyebrows */
+
+  /* ── Spacing scale ────────────────────────────────────────────── */
+  --cl-space-1:        0.25rem;
+  --cl-space-2:        0.5rem;
+  --cl-space-3:        0.75rem;
+  --cl-space-4:        1rem;
+  --cl-space-5:        1.25rem;
+  --cl-space-6:        1.5rem;
+  --cl-space-8:        2rem;
+  --cl-space-10:       2.5rem;
+  --cl-space-12:       3rem;
+  --cl-space-16:       4rem;
+
+  /* ── Radii ────────────────────────────────────────────────────── */
+  --cl-radius-sm:      0.375rem;
+  --cl-radius-md:      0.75rem;
+  --cl-radius-lg:      1rem;
+  --cl-radius-pill:    1.5rem;
+  --cl-radius-full:    999px;
+
+  /* ── Shadows (dark-canvas tuned) ──────────────────────────────── */
+  --cl-shadow-sm:      0 1px 2px rgba(0,0,0,0.3);
+  --cl-shadow-md:      0 4px 6px -1px rgba(0,0,0,0.4), 0 2px 4px -2px rgba(0,0,0,0.3);
+  --cl-shadow-lg:      0 10px 25px -5px rgba(0,0,0,0.5), 0 8px 10px -6px rgba(0,0,0,0.4);
+  --cl-shadow-gold:    0 8px 24px -8px rgba(230,193,133,0.35);
+
+  /* ── Motion ───────────────────────────────────────────────────── */
+  --cl-motion-fast:    150ms ease;
+  --cl-motion-base:    250ms ease;
+  --cl-motion-slow:    400ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   Semantic type styles — use on <h1>, <h2> etc. or via classes
+   ══════════════════════════════════════════════════════════════════════════ */
+
+.cl-hero {
+  font-family: var(--cl-font-display);
+  font-weight: var(--cl-weight-light);
+  font-size: var(--cl-text-4xl);
+  line-height: 1.05;
+  letter-spacing: var(--cl-tracking-tight);
+  color: var(--cl-fg1);
+}
+
+.cl-h1 {
+  font-family: var(--cl-font-display);
+  font-weight: var(--cl-weight-regular);
+  font-size: var(--cl-text-2xl);
+  line-height: 1.15;
+  letter-spacing: var(--cl-tracking-snug);
+  color: var(--cl-fg1);
+}
+
+.cl-h2 {
+  font-family: var(--cl-font-display);
+  font-weight: var(--cl-weight-regular);
+  font-size: var(--cl-text-xl);
+  line-height: 1.2;
+  letter-spacing: var(--cl-tracking-snug);
+  color: var(--cl-fg1);
+}
+
+.cl-h3 {
+  font-family: var(--cl-font-display);
+  font-weight: var(--cl-weight-medium);
+  font-size: var(--cl-text-lg);
+  line-height: 1.3;
+  color: var(--cl-fg1);
+}
+
+.cl-eyebrow {
+  font-family: var(--cl-font-display);
+  font-size: var(--cl-text-micro);
+  font-weight: var(--cl-weight-semibold);
+  text-transform: uppercase;
+  letter-spacing: var(--cl-tracking-widest);
+  color: var(--cl-gold);
+}
+
+.cl-overline {
+  font-family: var(--cl-font-display);
+  font-size: var(--cl-text-xs);
+  font-weight: var(--cl-weight-medium);
+  text-transform: uppercase;
+  letter-spacing: var(--cl-tracking-wide);
+  color: var(--cl-fg-muted);
+}
+
+.cl-body {
+  font-family: var(--cl-font-body);
+  font-size: var(--cl-text-base);
+  line-height: 1.7;
+  color: var(--cl-fg2);
+}
+
+.cl-body-sm {
+  font-family: var(--cl-font-body);
+  font-size: var(--cl-text-sm);
+  line-height: 1.6;
+  color: var(--cl-fg-muted);
+}
+
+.cl-price {
+  font-family: var(--cl-font-display);
+  font-weight: var(--cl-weight-bold);
+  font-size: var(--cl-text-xl);
+  color: var(--cl-gold);
+}
+
+.cl-mono {
+  font-family: var(--cl-font-mono);
+  font-size: var(--cl-text-sm);
+  color: var(--cl-fg2);
+}

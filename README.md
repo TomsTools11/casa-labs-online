@@ -1,5 +1,9 @@
 # Casa Labs Online
 
+> **Deployment status (May 30, 2026):** `main` currently serves the **"Coming Soon" splash** (`src/app/page.tsx`, `src/components/coming-soon/`, `public/casa-labs/`). The full store/blog site is preserved on the **`full-site`** branch.
+>
+> **To restore the full site:** repoint Vercel's production branch to `full-site`, **or** merge/restore it into `main` (e.g. `git checkout full-site -- . && git commit`) and redeploy. The launch countdown targets **July 1, 2026** — edit `LAUNCH` in `src/components/coming-soon/Countdown.tsx` to change it. Everything below describes the full store, not the current splash.
+
 A modern, responsive product catalog for Casa Labs — rebuilt from the ground up with Next.js and the App Router. Browse 127 research peptide products across 22+ categories with instant search, advanced filtering, side-by-side comparison, and full light/dark theme support.
 
 **Live site:** [casa-peptides-catalogue.vercel.app](https://casa-peptides-catalogue.vercel.app)

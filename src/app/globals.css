@@ -7,7 +7,7 @@
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-html, body { min-height: 100%; }
+html, body { min-height: 100%; max-width: 100%; overflow-x: hidden; }
 
 body {
   background: var(--cl-bg-primary);
@@ -296,6 +296,7 @@ form.row button:active { opacity: 0.9; transform: translateY(0); }
   margin: 0 auto;
   width: calc(100% - 2 * var(--cl-space-6));
   max-width: 1000px;
+  min-width: 0;
   margin-bottom: var(--cl-space-12);
   padding: var(--cl-space-10) var(--cl-space-12);
   display: flex;
@@ -325,7 +326,7 @@ form.row button:active { opacity: 0.9; transform: translateY(0); }
   z-index: 0;
 }
 .referral .copy, .referral .cta { position: relative; z-index: 1; }
-.referral .copy { max-width: 56ch; }
+.referral .copy { max-width: 56ch; min-width: 0; }
 .referral .eyebrow { margin-bottom: var(--cl-space-4); }
 .referral h2 {
   font-family: var(--cl-font-display);
@@ -402,8 +403,10 @@ footer.site .disclaimer {
 }
 footer.site .links {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  gap: var(--cl-space-5);
+  justify-content: center;
+  gap: var(--cl-space-3) var(--cl-space-5);
 }
 footer.site .links a {
   font-family: var(--cl-font-body);
@@ -421,6 +424,9 @@ footer.site .copyright {
 }
 
 @media (max-width: 640px) {
+  header.site { padding: var(--cl-space-6) var(--cl-space-4) var(--cl-space-3); }
+  header.site img.wordmark { height: 84px; }
+  main { padding: var(--cl-space-6) var(--cl-space-5) var(--cl-space-10); }
   .countdown { gap: 6px; }
   .unit { padding: var(--cl-space-4) 2px; border-radius: var(--cl-radius-md); }
   .unit .num { font-size: clamp(1.7rem, 11vw, 2.4rem); }

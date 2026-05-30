@@ -21,7 +21,7 @@ export default function ComingSoonPage() {
 
         <p
           className="sub"
-          style={{ fontSize: '19px', width: '472px', color: 'rgb(242, 222, 199)' }}
+          style={{ fontSize: '19px', maxWidth: '472px', color: 'rgb(242, 222, 199)' }}
         >
           The Casa Labs online store opens July 1, 2026. We provide
           third-party-verified, batch-traceable peptides.
@@ -63,7 +63,7 @@ export default function ComingSoonPage() {
           <span className="eyebrow">Referral Partner Program</span>
           <h2
             id="referral-heading"
-            style={{ fontSize: '34px', width: '548px', maxWidth: '100%', fontWeight: 600 }}
+            style={{ fontSize: '34px', maxWidth: '548px', fontWeight: 600 }}
           >
             Become a <span style={{ color: 'rgb(155, 132, 106)' }}>CASA Labs</span> referral partner.
           </h2>

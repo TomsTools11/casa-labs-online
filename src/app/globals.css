@@ -288,6 +288,98 @@ form.row button:active { opacity: 0.9; transform: translateY(0); }
 .trust .item svg { width: 15px; height: 15px; stroke: var(--cl-gold); flex: 0 0 auto; }
 .trust .dot { width: 4px; height: 4px; border-radius: 50%; background: var(--cl-gold-deep); }
 
+/* ── Referral partner CTA ─────────────────────────────────────────── */
+.referral {
+  position: relative;
+  z-index: 2;
+  flex-shrink: 0;
+  margin: 0 auto;
+  width: calc(100% - 2 * var(--cl-space-6));
+  max-width: 1000px;
+  margin-bottom: var(--cl-space-12);
+  padding: var(--cl-space-10) var(--cl-space-12);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--cl-space-10);
+  background:
+    radial-gradient(120% 160% at 85% 0%, rgba(200,177,154,0.10) 0%, rgba(200,177,154,0) 55%),
+    linear-gradient(180deg, rgba(32,31,31,0.82) 0%, rgba(20,20,20,0.82) 100%);
+  border: 1px solid var(--cl-border-gold);
+  border-radius: var(--cl-radius-lg);
+  backdrop-filter: blur(var(--cl-glass-blur));
+  -webkit-backdrop-filter: blur(var(--cl-glass-blur));
+  box-shadow: var(--cl-shadow-lg);
+  text-align: left;
+  overflow: hidden;
+}
+.referral .mark-deco {
+  position: absolute;
+  top: 50%;
+  right: -56px;
+  width: 320px;
+  height: 320px;
+  opacity: 0.10;
+  transform: translateY(-50%) rotate(8deg);
+  pointer-events: none;
+  z-index: 0;
+}
+.referral .copy, .referral .cta { position: relative; z-index: 1; }
+.referral .copy { max-width: 56ch; }
+.referral .eyebrow { margin-bottom: var(--cl-space-4); }
+.referral h2 {
+  font-family: var(--cl-font-display);
+  font-weight: var(--cl-weight-regular);
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  line-height: 1.15;
+  letter-spacing: var(--cl-tracking-snug);
+  color: var(--cl-fg1);
+}
+.referral p {
+  margin-top: var(--cl-space-4);
+  font-family: var(--cl-font-body);
+  font-weight: var(--cl-weight-light);
+  font-size: var(--cl-text-md);
+  line-height: 1.65;
+  color: var(--cl-fg-muted);
+  text-wrap: pretty;
+}
+.referral .cta {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--cl-space-3);
+  height: 58px;
+  padding: 0 var(--cl-space-8);
+  font-family: var(--cl-font-display);
+  font-weight: var(--cl-weight-semibold);
+  font-size: var(--cl-text-sm);
+  letter-spacing: var(--cl-tracking-wide);
+  text-transform: uppercase;
+  color: var(--cl-on-gold);
+  background: var(--cl-gradient-gold);
+  border: 0;
+  border-radius: var(--cl-radius-md);
+  box-shadow: var(--cl-shadow-gold);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: transform var(--cl-motion-fast), opacity var(--cl-motion-fast);
+}
+.referral .cta svg { width: 17px; height: 17px; stroke: var(--cl-on-gold); }
+.referral .cta:hover { transform: translateY(-1px); }
+.referral .cta:active { opacity: 0.9; transform: translateY(0); }
+
+@media (max-width: 760px) {
+  .referral {
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    padding: var(--cl-space-8) var(--cl-space-6);
+    gap: var(--cl-space-6);
+  }
+  .referral .cta { width: 100%; justify-content: center; }
+}
+
 /* ── Footer ───────────────────────────────────────────────────────── */
 footer.site {
   position: relative;

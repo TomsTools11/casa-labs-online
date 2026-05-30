@@ -56,6 +56,36 @@ export default function ComingSoonPage() {
         </div>
       </main>
 
+      <section className="referral" aria-labelledby="referral-heading">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img className="mark-deco" src="/casa-labs/mark-cream.png" alt="" aria-hidden="true" />
+        <div className="copy">
+          <span className="eyebrow">Referral Partner Program</span>
+          <h2
+            id="referral-heading"
+            style={{ fontSize: '34px', width: '548px', maxWidth: '100%', fontWeight: 600 }}
+          >
+            Become a <span style={{ color: 'rgb(155, 132, 106)' }}>CASA Labs</span> referral partner.
+          </h2>
+          <p>
+            Earn a percentage of every sale made with your unique referral code. We handle
+            fulfillment, testing, and chain of custody — you bring the audience and get paid on
+            each order.
+          </p>
+        </div>
+        <a
+          className="cta"
+          href="https://forms.gle/se9Ffua4hvApTUzc8"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Apply to Partner
+          <svg viewBox="0 0 24 24" fill="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M5 12h14M13 6l6 6-6 6" />
+          </svg>
+        </a>
+      </section>
+
       <footer className="site">
         <div className="disclaimer">
           For Research &amp; Laboratory Use Only · Not for Human Consumption

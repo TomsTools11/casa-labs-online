@@ -98,6 +98,8 @@ export default function ComingSoonPage() {
           <a href="#">Contact</a>
         </div>
         <div className="copyright">© 2026 Casa Labs. All rights reserved.</div>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img className="footer-mark" src="/casa-labs/casa-labs-footer-cream.png" alt="Casa Labs" />
       </footer>
     </>
   );

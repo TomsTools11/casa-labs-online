@@ -9,6 +9,10 @@
 
 html, body { min-height: 100%; max-width: 100%; overflow-x: hidden; }
 
+@media (prefers-reduced-motion: no-preference) {
+  html { scroll-behavior: smooth; }
+}
+
 body {
   background: var(--cl-bg-primary);
   color: var(--cl-fg2);
@@ -425,10 +429,16 @@ footer.site .copyright {
 footer.site .footer-mark {
   display: block;
   width: 120px;
-  height: auto;
   margin-top: var(--cl-space-3);
   opacity: 0.9;
+  transition: opacity var(--cl-motion-fast);
 }
+footer.site .footer-mark img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+footer.site .footer-mark:hover { opacity: 1; }
 
 @media (max-width: 640px) {
   header.site { padding: var(--cl-space-6) var(--cl-space-4) var(--cl-space-3); }

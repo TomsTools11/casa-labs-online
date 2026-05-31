@@ -7,8 +7,11 @@ export default function ComingSoonPage() {
       <div className="bg" aria-hidden="true" />
 
       <header className="site">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img className="wordmark" src="/casa-labs/casa-labs-cream.png" alt="Casa Labs" />
+        <picture>
+          <source srcSet="/casa-labs/casa-labs-cream.png" media="(prefers-color-scheme: dark)" />
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img className="wordmark" src="/casa-labs/casa-labs-charcoal.png" alt="Casa Labs" />
+        </picture>
       </header>
 
       <main>
@@ -21,7 +24,7 @@ export default function ComingSoonPage() {
 
         <p
           className="sub"
-          style={{ fontSize: '19px', maxWidth: '472px', color: 'rgb(242, 222, 199)' }}
+          style={{ fontSize: '19px', maxWidth: '472px', color: 'var(--cl-fg2)' }}
         >
           The Casa Labs online store opens July 1, 2026. We provide
           third-party-verified, batch-traceable peptides.
@@ -65,7 +68,7 @@ export default function ComingSoonPage() {
             id="referral-heading"
             style={{ fontSize: '34px', maxWidth: '548px', fontWeight: 600 }}
           >
-            Become a <span style={{ color: 'rgb(155, 132, 106)' }}>CASA Labs</span> referral partner.
+            Become a <span style={{ color: 'var(--cl-gold)' }}>CASA Labs</span> referral partner.
           </h2>
           <p>
             Earn a percentage of every sale made with your unique referral code. We handle
@@ -99,8 +102,11 @@ export default function ComingSoonPage() {
         </div>
         <div className="copyright">© 2026 Casa Labs. All rights reserved.</div>
         <a className="footer-mark" href="#" aria-label="Back to top">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/casa-labs/casa-labs-footer-cream.png" alt="Casa Labs" />
+          <picture>
+            <source srcSet="/casa-labs/casa-labs-footer-cream.png" media="(prefers-color-scheme: dark)" />
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/casa-labs/casa-labs-footer-charcoal.png" alt="Casa Labs" />
+          </picture>
         </a>
       </footer>
     </>

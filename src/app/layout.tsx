@@ -18,6 +18,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <head>
         {/* Casa Labs design tokens + brand fonts (Lato self-hosted, Epilogue/Inter via Google) */}
         <link rel="stylesheet" href="/casa-labs/colors_and_type.css" />
+        {/* Match mobile browser chrome to the active system theme */}
+        <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#131313" />
+        <meta name="theme-color" media="(prefers-color-scheme: light)" content="#FBF7F0" />
       </head>
       <body>
         <PlausibleAnalytics />

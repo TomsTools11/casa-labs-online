@@ -451,3 +451,50 @@ footer.site .footer-mark:hover { opacity: 1; }
   form.row { flex-direction: column; }
   form.row button { width: 100%; }
 }
+
+/* ══════════════════════════════════════════════════════════════════════════
+   Light theme — per-element overrides for styling that is NOT token-driven.
+   Token values flip in /casa-labs/colors_and_type.css; this block handles the
+   hard-coded dark backgrounds, the headline text-gradient, and the referral
+   panel (which stays dark, so its color tokens are re-pinned locally).
+   Placed last so equal-specificity rules win by source order.
+   ══════════════════════════════════════════════════════════════════════════ */
+@media (prefers-color-scheme: light) {
+  /* Hero: drop the dark vial photo for a clean cream → white wash */
+  .bg {
+    background-image:
+      radial-gradient(120% 90% at 50% 18%, rgba(255,255,255,0) 0%, rgba(252,233,208,0.30) 55%, rgba(243,238,230,0.65) 100%),
+      linear-gradient(180deg, #FBF7F0 0%, #F3EEE6 100%);
+    background-size: cover, cover;
+    background-position: center, center;
+  }
+  .bg::after {
+    background: radial-gradient(circle, rgba(200,177,154,0.18) 0%, rgba(200,177,154,0) 60%);
+  }
+
+  /* Countdown cards: light frosted glass instead of the dark gradient */
+  .unit {
+    background: linear-gradient(180deg, rgba(255,255,255,0.70) 0%, rgba(250,245,238,0.70) 100%);
+  }
+
+  /* Headline accent word: --cl-gradient-gold stays brass for button fills, so
+     the text gradient gets its own darker brass to read on cream. The
+     `background` shorthand resets background-clip, so re-declare the text clip
+     (text-fill-color:transparent from the base rule still applies). */
+  h1.headline em {
+    background: linear-gradient(135deg, #8A6F55 0%, #5B4A37 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+  }
+
+  /* Referral panel stays a DARK accent band. Its children read --cl-fg* /
+     --cl-gold, which now hold light values → re-pin them to dark-canvas
+     values on the panel only, so heading/body/eyebrow/accent stay legible. */
+  .referral {
+    --cl-fg1:         #F5F5DC;
+    --cl-fg2:         #E6D5B8;
+    --cl-fg-muted:    #A69677;
+    --cl-gold:        #C8B19A;
+    --cl-border-gold: rgba(230,193,133,0.25);
+  }
+}

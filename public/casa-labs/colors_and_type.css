@@ -20,6 +20,9 @@
 @font-face { font-family: 'Lato'; src: url('fonts/Lato-BlackItalic.ttf') format('truetype'); font-weight: 900; font-style: italic; font-display: swap; }
 
 :root {
+  /* Render native UI (form controls, scrollbars) to match the active theme */
+  color-scheme: light dark;
+
   /* ── Brand Palette ──────────────────────────────────────────────── */
   --cl-cream:          #fce9d0;  /* soft cream, primary light surface, logo fill */
   --cl-tan:            #c8b19a;  /* tan mid-tone, secondary accent */
@@ -148,6 +151,53 @@
   --cl-motion-fast:    150ms ease;
   --cl-motion-base:    250ms ease;
   --cl-motion-slow:    400ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   Light theme — auto-applied when the device's system theme is Light.
+   Redefines token VALUES only, so every var(--cl-*) call site flips at once.
+   (Per-element exceptions that aren't token-driven live in globals.css.)
+   ══════════════════════════════════════════════════════════════════════════ */
+@media (prefers-color-scheme: light) {
+  :root {
+    /* ── Surfaces → light ramp ──────────────────────────────────── */
+    --cl-bg-lowest:      #F3EEE6;
+    --cl-bg-primary:     #FBF7F0;  /* page background */
+    --cl-bg-secondary:   #F5F1EA;  /* cards, glass base */
+    --cl-bg-elevated:    #FFFFFF;  /* elevated cards */
+    --cl-bg-hover:       #EFE9DF;  /* active hover */
+    --cl-bg-highest:     #FFFFFF;  /* inputs */
+
+    /* ── Text → dark ink on cream ───────────────────────────────── */
+    --cl-fg1:            #1A1816;  /* primary */
+    --cl-fg2:            #3A322A;  /* secondary */
+    --cl-fg-muted:       #6F6253;  /* muted */
+
+    /* ── Accent — darkened brass so gold-as-TEXT/icons reads on cream.
+       NOTE: --cl-gradient-gold is intentionally NOT darkened (it fills
+       brass buttons that carry dark --cl-on-gold text). --cl-gold is
+       used as text/icon color (eyebrow, trust icons, link hover); keep
+       it ≥4.5:1 on --cl-bg-primary. ──────────────────────────────── */
+    --cl-gold:           #7A6147;  /* AA on #FBF7F0 (~5.0:1) */
+    --cl-gold-hover:     #5B4A37;
+    --cl-gold-bg:        rgba(122,97,71,0.12);
+    --cl-gold-deep:      #5B4A37;
+
+    /* ── Borders → dark-on-light ────────────────────────────────── */
+    --cl-border:         rgba(26,24,22,0.12);
+    --cl-border-light:   rgba(26,24,22,0.08);
+    --cl-border-gold:    rgba(122,97,71,0.30);
+    --cl-border-cream:   rgba(122,97,71,0.25);
+
+    /* ── Glass → light frosted ──────────────────────────────────── */
+    --cl-glass-bg:       rgba(255,255,255,0.60);
+
+    /* ── Shadows → softened (dark-tuned rgba(0,0,0,0.5) is harsh) ── */
+    --cl-shadow-sm:      0 1px 2px rgba(70,60,50,0.08);
+    --cl-shadow-md:      0 4px 6px -1px rgba(70,60,50,0.10), 0 2px 4px -2px rgba(70,60,50,0.08);
+    --cl-shadow-lg:      0 10px 25px -5px rgba(70,60,50,0.15), 0 8px 10px -6px rgba(70,60,50,0.10);
+    --cl-shadow-gold:    0 8px 24px -8px rgba(122,97,71,0.30);
+  }
 }
 
 /* ══════════════════════════════════════════════════════════════════════════

@@ -11,9 +11,10 @@ export const ACTIVE_TIER: TierKey = 'founding';
 // Per-customer reservation cap.
 export const MAX_BUNDLES = 3;
 
-// Google Apps Script Web App /exec URL — paste the deployed endpoint here
-// (see apps-script/README.md). Public endpoint, not a secret. Until a real
-// URL is set, submissions fall back to opening a pre-filled email.
+// Pre-launch mode: left empty on purpose — the form runs off a pre-filled
+// email (mailto) to FALLBACK_EMAIL. When the real order pipeline lands at
+// launch, paste a Google Apps Script Web App /exec URL here (see
+// apps-script/README.md) or swap in the new endpoint. Not a secret.
 export const FORM_ENDPOINT = '';
 
 export const FALLBACK_EMAIL = 'alex@casalabs.shop';

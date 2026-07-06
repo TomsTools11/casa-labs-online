@@ -44,21 +44,29 @@ function buildMailtoUrl(fields: PreorderFields, summary: string): string {
   return `mailto:${FALLBACK_EMAIL}?subject=${encodeURIComponent('Pre-Order Reservation: ' + t.label)}&body=${body}`;
 }
 
-function emailFallback(fields: PreorderFields, summary: string): void {
-  window.location.href = buildMailtoUrl(fields, summary);
+export type SubmitMethod = 'endpoint' | 'mailto';
+
+export interface SubmitResult {
+  method: SubmitMethod;
+  /** Pre-filled order email — lets the UI offer a retry link in mailto mode. */
+  mailtoUrl: string;
 }
 
 /**
  * Submits the pre-order. Resolves once the request has been handed off —
  * the Apps Script POST is fire-and-forget (no-cors responses are opaque),
- * mirroring the pattern proven by the coming-soon notify form.
+ * mirroring the pattern proven by the coming-soon notify form. With no
+ * endpoint configured (current pre-launch mode), it opens a pre-filled
+ * email instead and reports method: 'mailto' so the UI can tell the
+ * visitor to press Send.
  */
-export async function submitPreorder(fields: PreorderFields, qty: Quantities): Promise<void> {
+export async function submitPreorder(fields: PreorderFields, qty: Quantities): Promise<SubmitResult> {
   const summary = buildOrderSummary(qty);
+  const mailtoUrl = buildMailtoUrl(fields, summary);
 
   if (!FORM_ENDPOINT.startsWith('http')) {
-    emailFallback(fields, summary);
-    return;
+    window.location.href = mailtoUrl;
+    return { method: 'mailto', mailtoUrl };
   }
 
   const t = TIERS[ACTIVE_TIER];
@@ -86,7 +94,9 @@ export async function submitPreorder(fields: PreorderFields, qty: Quantities): P
       headers: { 'Content-Type': 'text/plain;charset=utf-8' },
       body: JSON.stringify(payload),
     });
+    return { method: 'endpoint', mailtoUrl };
   } catch {
-    emailFallback(fields, summary);
+    window.location.href = mailtoUrl;
+    return { method: 'mailto', mailtoUrl };
   }
 }

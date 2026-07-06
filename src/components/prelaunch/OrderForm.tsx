@@ -4,14 +4,14 @@ import { useEffect, useRef, useState } from 'react';
 import { ACTIVE_TIER, MAX_BUNDLES } from '@/config/preorder';
 import { BUNDLES, type BundleId } from '@/lib/preorder/data';
 import { maxPct, priceFor, usd } from '@/lib/preorder/pricing';
-import { orderTotal, submitPreorder, type Quantities } from '@/lib/preorder/submit';
+import { orderTotal, submitPreorder, type Quantities, type SubmitResult } from '@/lib/preorder/submit';
 import SectionHead from './SectionHead';
 
 export default function OrderForm() {
   const [qty, setQty] = useState<Quantities>({ origin: 0, metabolic: 0, neuro: 0 });
   const [ack, setAck] = useState(false);
   const [sending, setSending] = useState(false);
-  const [sent, setSent] = useState(false);
+  const [sent, setSent] = useState<SubmitResult | null>(null);
   const honeypotRef = useRef<HTMLInputElement>(null);
   const statusRef = useRef<HTMLDivElement>(null);
 
@@ -38,9 +38,11 @@ export default function OrderForm() {
     });
   }
 
-  const submitDisabled = sent || sending || totalQty === 0 || !ack;
+  const submitDisabled = !!sent || sending || totalQty === 0 || !ack;
   const submitLabel = sent
-    ? 'Pre-order sent ✓'
+    ? sent.method === 'mailto'
+      ? 'Pre-order email prepared ✓'
+      : 'Pre-order sent ✓'
     : sending
       ? 'Sending…'
       : totalQty === 0
@@ -59,7 +61,7 @@ export default function OrderForm() {
       return el instanceof HTMLInputElement || el instanceof HTMLTextAreaElement ? el.value : '';
     };
     try {
-      await submitPreorder(
+      const result = await submitPreorder(
         {
           name: v('name'),
           email: v('email'),
@@ -70,7 +72,7 @@ export default function OrderForm() {
         },
         qty
       );
-      setSent(true);
+      setSent(result);
     } finally {
       setSending(false);
     }
@@ -191,12 +193,19 @@ export default function OrderForm() {
           {/* Live region stays mounted (and never display:none) so the
               confirmation is reliably announced when its content appears. */}
           <div ref={statusRef} tabIndex={-1} role="status" aria-live="polite" style={{ outline: 'none' }}>
-            {sent && (
-              <div className="msg ok">
-                Thank you. Your pre-order request has been sent. We&apos;ll be in touch shortly to
-                confirm.
-              </div>
-            )}
+            {sent &&
+              (sent.method === 'mailto' ? (
+                <div className="msg ok">
+                  Almost done — your email app has opened with your pre-order details. Press Send
+                  to complete your reservation. Nothing opened?{' '}
+                  <a href={sent.mailtoUrl}>Email your order to alex@casalabs.shop</a>.
+                </div>
+              ) : (
+                <div className="msg ok">
+                  Thank you. Your pre-order request has been sent. We&apos;ll be in touch shortly
+                  to confirm.
+                </div>
+              ))}
           </div>
         </form>
       </div>

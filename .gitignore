@@ -9,3 +9,8 @@ package-lock.json
 
 # TypeScript
 next-env.d.ts
+tsconfig.tsbuildinfo
+
+# Local tooling
+.claude/
+.vercel/
